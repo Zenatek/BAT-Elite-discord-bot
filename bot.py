@@ -25,7 +25,7 @@ async def on_member_update(before, after):
         newRole = next(role for role in after.roles if role not in before.roles)
         if newRole.id == 878737866337959947:
             member = client.get_guild(before.guild.id).get_member(before.id)
-            await member.send(f'{member.name} we are glad to have you in the 📣bat-elites!  :partying_face:')
+            await member.send(f'{member.name} we are glad to have you in the 📣bat-elites!  🥳')
             await member.send(f'Please enter your twitter profile link below. ⬇️ ')
 
 
