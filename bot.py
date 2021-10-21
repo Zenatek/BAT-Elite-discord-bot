@@ -35,7 +35,7 @@ async def on_message(message):
     user = message.author
     server = client.get_guild(839283762843484192)
     role = discord.utils.find(lambda r: r.id == 878737866337959947, server.roles)
-    if(role != None):
+    if(role is not None):
         if(role in server.get_member(user.id).roles):
             if "https://twitter.com/" in message.content:
                 if isinstance(message.channel, discord.channel.DMChannel):
