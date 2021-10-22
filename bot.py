@@ -35,14 +35,17 @@ async def on_message(message):
     user = message.author
     server = client.get_guild(839283762843484192)
     role = discord.utils.find(lambda r: r.id == 878737866337959947, server.roles)
-    if(role is not None):
+    if(server.get_member(user.id) is not None):
         if(role in server.get_member(user.id).roles):
             if "https://twitter.com/" in message.content:
                 if isinstance(message.channel, discord.channel.DMChannel):
-                    myfile = open('bat_elite_list.txt','a')
-                    myfile.write('\n'+'@' + str(message.author).replace(" ", "") + '\t\t\t' + str(message.content))
-                    myfile.close()
-                    await message.add_reaction("✅")
+                    myfile = open('bat_elite_list.txt','r')
+                    if('https://twitter.com/rootx86' not in myfile.read()):
+                        myfile.close()
+                        myfile = open('bat_elite_list.txt','a')
+                        myfile.write('@' + str(message.author).replace(" ", "") + '\t\t\t' + str(message.content)+'\n')
+                        myfile.close()
+                        await message.add_reaction("✅")
             elif "!elites list" in message.content:
                 embed=discord.Embed(
                 title="BAT Elites",
