@@ -40,7 +40,7 @@ async def on_message(message):
             if "https://twitter.com/" in message.content:
                 if isinstance(message.channel, discord.channel.DMChannel):
                     myfile = open('bat_elite_list.txt','r')
-                    if('https://twitter.com/rootx86' not in myfile.read()):
+                    if(message.content not in myfile.read()):
                         myfile.close()
                         myfile = open('bat_elite_list.txt','a')
                         myfile.write('@' + str(message.author).replace(" ", "") + '\t\t\t' + str(message.content)+'\n')
